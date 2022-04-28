@@ -1,6 +1,9 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn } from "../services/auth"
+import { view, 
+pictureFormat} from "./login.module.css"
+import { handleLogin, isLoggedIn } from "../../services/auth"
+import { StaticImage } from 'gatsby-plugin-image'
 
 class Login extends React.Component {
   state = {
@@ -26,7 +29,11 @@ class Login extends React.Component {
 
     return (
       <>
-        <h1>Log in</h1>
+      <div className={ view } >
+      <div className={ pictureFormat }>
+        <StaticImage src="../images/tigerhawk.jpeg"/>
+        </div>
+        <h1>Log in!</h1>
         <form
           method="post"
           onSubmit={event => {
@@ -48,6 +55,7 @@ class Login extends React.Component {
           </label>
           <input type="submit" value="Log In" />
         </form>
+        </div>
       </>
     )
   }
