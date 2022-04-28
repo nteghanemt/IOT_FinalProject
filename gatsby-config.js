@@ -3,5 +3,7 @@ module.exports = {
     siteUrl: "https://www.yourdomain.tld",
     title: "IOT Final Project Group 6",
   },
-  plugins: [],
+  plugins: ["gatsby-plugin-image",
+  "gatsby-plugin-sharp",
+],
 };
