@@ -1,0 +1,107 @@
+.container {
+    margin: auto;
+    max-width: 800px;
+    font-family: sans-serif;
+}
+
+.body {
+    background: #fff; 
+}
+
+.heading {
+    color: #42413d;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav-link-item {
+    padding-right: 2rem;
+    list-style: none;
+    color: #42413d;
+}
+
+.nav-link-text {
+    color: black;
+}
+
+.tigerhawk {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto  !important;
+    width: 50%;
+}
+
+.Logo {
+    padding-top: 0px;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto  !important;
+    width: 50%;
+}
+
+.h3 {
+    color: #42413d;
+}
+
+.linkStyle {
+    padding-top: 15px;
+    list-style: none;
+    color: #42413d;
+    align-items: center;
+    text-align: center;
+}
+
+.teamMemberSummary {
+    margin: 15px;
+    width: 40%;
+    min-height: 12em;
+    float: left;
+    background-color: #f6f5f1;
+    border-radius: 15px;
+    display: flexbox;
+}
+
+.summarySnippet {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.pictureFormat {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.raytheon {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto  !important;
+    width: 50%;
+}
+
+.summer22 {
+    padding-top: 50px;
+}
+.summer19 {
+    padding-top: 100px;
+}
+
+
+/* 
+ Palette 
+--white-color: #fff;
+--black-color: #42413d;
+--gray-color: #f6f5f1;
+--gray-dark-color: #d6d5d2;
+--green-color: #20ae44;
+--red-color: #ff6124;
+--yellow-color: #fae361;
+*/
