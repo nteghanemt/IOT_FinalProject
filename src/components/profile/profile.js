@@ -2,7 +2,7 @@ import React from "react"
 import { view,form, form__label, form__input, form__button } from "./form.module.css"
 import { navigate } from "@reach/router"
 import { getUser } from "../../services/auth"
-
+import database from "../firebase";
 
 const Profile = ({ handleSubmit, handleUpdate }) => (
   <div className={ view } >
@@ -11,7 +11,7 @@ const Profile = ({ handleSubmit, handleUpdate }) => (
     method="post"
     onSubmit={event => {
       handleSubmit(event)
-      //navigate(`/app/profile`)
+      navigate(`/app/game`)
     }}
   >
     
