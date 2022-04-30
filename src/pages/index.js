@@ -1,13 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 import { getUser, isLoggedIn } from "../services/auth"
-
+import { view } from "../components/layout.module.css"
 import Layout from "../components/layout"
 
 export default function Home() {
   return (
     <Layout>
-      <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
+      <div className={ view } >
+      <h1>Hello {isLoggedIn() ? getUser().name : "this is our chess app"}!</h1>
       <p>
         {isLoggedIn() ? (
           <>
@@ -16,11 +17,12 @@ export default function Home() {
           </>
         ) : (
           <>
-            You should <Link to="/app/login">log in</Link> to see restricted
+            You should <Link to="/app/login">log in</Link> to see your profile
             content
           </>
         )}
       </p>
+      </div>
     </Layout>
   )
 }

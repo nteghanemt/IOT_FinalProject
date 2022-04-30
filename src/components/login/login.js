@@ -31,7 +31,7 @@ class Login extends React.Component {
       <>
       <div className={ view } >
       <div className={ pictureFormat }>
-        <StaticImage src="../images/tigerhawk.jpeg"/>
+        <StaticImage src="../../images/tigerhawk.jpeg"/>
         </div>
         <h1>Log in!</h1>
         <form
@@ -48,10 +48,7 @@ class Login extends React.Component {
           <label>
             Password
             <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
+              type="password" name="password" onChange={this.handleUpdate} />
           </label>
           <input type="submit" value="Log In" />
         </form>

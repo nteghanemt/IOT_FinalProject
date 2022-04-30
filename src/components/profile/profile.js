@@ -1,6 +1,8 @@
 import React from "react"
 import { view,form, form__label, form__input, form__button } from "./form.module.css"
 import { navigate } from "@reach/router"
+import { getUser } from "../../services/auth"
+import database from "../firebase";
 
 const Profile = ({ handleSubmit, handleUpdate }) => (
   <div className={ view } >
@@ -9,13 +11,12 @@ const Profile = ({ handleSubmit, handleUpdate }) => (
     method="post"
     onSubmit={event => {
       handleSubmit(event)
-      navigate(`/app/profile`)
+      navigate(`/app/game`)
     }}
   >
     
     <p>
-      For this demo, please log in with the username <code>gatsby</code> and the
-      password <code>demo</code>.
+      Enter your move in the form, <code>L4</code>,<code>demo</code>.
     </p>
     <label className={form__label}>
       Move
@@ -37,7 +38,15 @@ const Profile = ({ handleSubmit, handleUpdate }) => (
     </label>
     <input className={form__button} type="submit" value="Enter Move" />
   </form>
+  <>
+    <h1>Your profile</h1>
+    <ul>
+      <li>Name: {getUser().name}</li>
+      <li>E-mail: {getUser().email}</li>
+    </ul>
+  </>
   </div>
+  
 )
 
 export default Profile
