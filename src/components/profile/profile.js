@@ -1,14 +1,12 @@
 import React from "react"
-import { view,form, form__label, form__input, form__button } from "./form.module.css"
+import { view } from "./form.module.css"
 import { navigate } from "@reach/router"
-import { pictureFormat} from "../login/login.module.css"
-import { handleLogin, isLoggedIn } from "../../services/auth"
-import { getUser } from "../../services/auth"
+import { getDatabase, ref, get, update } from "firebase/database";
 
 class Profile extends React.Component {
   state = {
-    username: ``,
-    password: ``,
+    startColor: ``,
+    difficulty: ``,
   }
 
   handleUpdate = event => {
@@ -19,14 +17,48 @@ class Profile extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
+
+    const dbref = ref(getDatabase(), 'Games');
+    get(dbref).then((snapshot) => {
+      if(snapshot.exists()){
+        const current_count = snapshot.val().counter;
+        update(dbref,{
+          counter: current_count + 1
+        });
+      }
+      else{
+      console.log("no Data avalable");
+      }
+    });
+    const db = ref(getDatabase(), 'Games');
+    get(db).then((snapshot) => {
+      if(snapshot.exists()){
+        const current_count2 = snapshot.val().counter;
+        var temp = String(current_count2);
+        temp = "Game" + temp;
+        const stColor = String(this.state.startColor);
+        const stDiff = String(this.state.difficulty);
+        const postData = {'MoveCount':0,
+                          'color':stColor,
+                          'difficulty':stDiff,
+                          'Moves':{'player':'',
+                                   'computer':''}}
+        const updates = {};
+        updates[temp] = postData;
+        update(db, updates);
+
+      }
+      else{
+      console.log("no Data avalable");
+      }
+    });
   }
 
   render() {
     return (
       <>
       <div className={ view } >
-        <h1>Log in!</h1>
+        <h1>Start A Game!</h1>
         <form
           method="post"
           onSubmit={event => {
@@ -54,51 +86,3 @@ class Profile extends React.Component {
 }
 
 export default Profile
-/*
-const Profile = ({ handleSubmit, handleUpdate }) => (
-  <div className={ view } >
-  <form
-    className={form}
-    method="post"
-    onSubmit={event => {
-      handleSubmit(event)
-      navigate(`/app/game`)
-    }}
-  >
-    
-    <p>
-      Start a new game, <code>L4</code>,<code>demo</code>.
-    </p>
-    <label className={form__label}>
-      Start Color
-      <input
-        className={form__input}
-        type="text"
-        name="username"
-        onChange={handleUpdate}
-      />
-    </label>
-    <label className={form__label}>
-      Difficulty
-      <input
-        className={form__input}
-        type="password"
-        name="password"
-        onChange={handleUpdate}
-      />
-    </label>
-    <input className={form__button} type="submit" value="" />
-  </form>
-  <>
-    <h1>Your profile</h1>
-    <ul>
-      <li>Name: {getUser().name}</li>
-      <li>E-mail: {getUser().email}</li>
-    </ul>
-  </>
-  </div>
-  
-)
-
-export default Profile
-*/
