@@ -9,8 +9,9 @@ import Login from "../components/login/login"
 const App = () => (
   <Layout>
     <Router>
-    <PrivateRoute path="/app/profile" component={Profile} />
     <Login path="/app/login" />
+    <PrivateRoute path="/app/profile" component={Profile} />
+    <PrivateRoute path="/app/game" component={Game} />
     </Router>
   </Layout>
 )
