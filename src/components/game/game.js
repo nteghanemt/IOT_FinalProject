@@ -12,29 +12,29 @@ class Game extends React.Component {
     render() {
 
         return (
-          <>
-          <div className={ view } >
-            <h1>Log in!</h1>
-            <form
-              method="post"
-              onSubmit={event => {
-                this.handleSubmit(event)
-                navigate(`/app/profile`)
-              }}
-            >
-              <label>
-                Username
-                <input type="text" name="username" onChange={this.handleUpdate} />
-              </label>
-              <label>
-                Password
-                <input
-                  type="password" name="password" onChange={this.handleUpdate} />
-              </label>
-              <input type="submit" value="Log In" />
-            </form>
-            </div>
-          </>
+            <>
+            <div className={ view } >
+                <h1>Log in!</h1>
+                <form
+                method="post"
+                onSubmit={event => {
+                    this.handleSubmit(event)
+                    navigate(`/app/Game`)
+                }}
+                >
+                <label>
+                    Username
+                    <input type="text" name="username" onChange={this.handleUpdate} />
+                </label>
+                <label>
+                    Password
+                    <input
+                    type="password" name="password" onChange={this.handleUpdate} />
+                </label>
+                <input type="submit" value="Log In" />
+                </form>
+                </div>
+            </>
         )
     }
 }

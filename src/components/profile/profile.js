@@ -31,19 +31,21 @@ class Profile extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/app/Game`)
+            navigate(`/app/game`)
           }}
         >
           <label>
-            Username
-            <input type="text" name="username" onChange={this.handleUpdate} />
+            Start Color
+            <input type="text" name="startColor" onChange={this.handleUpdate} />
           </label>
           <label>
-            Password
+            Difficulty
             <input
-              type="password" name="password" onChange={this.handleUpdate} />
+              type="text" name="difficulty" onChange={this.handleUpdate} />
           </label>
-          <input type="submit" value="Log In" />
+          <br></br>
+          <br></br>
+          <input type="submit" value="Start Game" />
         </form>
         </div>
       </>
