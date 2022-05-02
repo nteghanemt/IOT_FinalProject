@@ -1,37 +1,75 @@
 import React from "react"
-import { getUser } from "../../services/auth"
-import { navigate } from "gatsby"
-import { view, 
-    pictureFormat} from "../login/login.module.css"
-
+import { view} from "../login/login.module.css"
+import app from "../firebase"
+import { navigate } from "@reach/router"
+import { getDatabase, ref, get, set, update } from "firebase/database";
+    
 class Game extends React.Component {
     state = {
-        username: ``,
-        password: ``,
-      }
+        move: ``,
+    }
+    
+    handleUpdate = event => {
+        this.setState({
+          [event.target.name]: event.target.value,
+        })
+    }
+    handleSubmit = event => {
+        event.preventDefault()
+        var current_count = 0;
+        const dbref = ref(getDatabase(), 'Games');
+        get(dbref).then((snapshot) => {
+            if(snapshot.exists()){
+                current_count = snapshot.val().counter - 1;
+            }
+            else{
+            console.log("no Data avalable");
+            }
+        });
+        ////////////////////
+        // I got as far as this yesterday. 
+        // I was having trouble upgating the moves in dictionary
+        // if you can figure that out that would be great
+        /////////////////////
+        const address = "Games/Game" + current_count;
+        const db = ref(getDatabase(), );
+        get(db).then((snapshot) => {
+        if(snapshot.exists()){
+            const current_count2 = snapshot.val().MoveCount;
+            var temp = String(current_count2);
+            temp = "Move" + temp;
+            const stMove = String(this.state.move);
+            const postData = {'player':stMove}
+            const updates = {};
+            update['Moves'] = postData;
+            update(db, updates);
+            update(db,{
+                MoveCount: current_count2 + 1
+            });
+        }
+        else{
+        console.log("no Data avalable");
+        }
+        });
+    }
     render() {
 
         return (
             <>
             <div className={ view } >
-                <h1>Log in!</h1>
+                <h1>Make Your Move!</h1>
                 <form
                 method="post"
                 onSubmit={event => {
                     this.handleSubmit(event)
-                    navigate(`/app/Game`)
+                    navigate(`/app/game`)
                 }}
                 >
                 <label>
-                    Username
-                    <input type="text" name="username" onChange={this.handleUpdate} />
+                    Move
+                    <input type="text" name="move" onChange={this.handleUpdate} />
                 </label>
-                <label>
-                    Password
-                    <input
-                    type="password" name="password" onChange={this.handleUpdate} />
-                </label>
-                <input type="submit" value="Log In" />
+                <input type="submit" value="Enter" />
                 </form>
                 </div>
             </>
