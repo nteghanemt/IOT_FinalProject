@@ -1,16 +1,13 @@
 import React from "react"
 import { navigate } from "gatsby"
-//import { Link } from "gatsby"
-import { Link } from '@reach/router'
 import { view, 
-pictureFormat,
-linkStyle} from "./login.module.css"
+pictureFormat} from "./signup.module.css"
 import { handleLogin, isLoggedIn } from "../../services/auth"
-import { StaticImage } from 'gatsby-plugin-image'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   state = {
-    email: ``,
+    username: ``,
     password: ``,
   }
 
@@ -23,24 +20,13 @@ class Login extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     handleLogin(this.state)
-
   }
-  handleSubmit2 = event => {
-    event.preventDefault()
-  }
-
 
   render() {
-    if (isLoggedIn()) {
-      navigate(`/app/profile`)
-    }
 
     return (
       <>
       <div className={ view } >
-      <div className={ pictureFormat }>
-        <StaticImage src="../../images/tigerhawk.jpeg"/>
-        </div>
         <h1>Log in!</h1>
         <form
           method="post"
@@ -50,8 +36,8 @@ class Login extends React.Component {
           }}
         >
           <label>
-            Email
-            <input type="text" name="email" onChange={this.handleUpdate} />
+            Username
+            <input type="text" name="username" onChange={this.handleUpdate} />
           </label>
           <label>
             Password
@@ -61,20 +47,9 @@ class Login extends React.Component {
           <input type="submit" value="Log In" />
         </form>
         </div>
-        <div className={ view } >
-        <form
-          method="post"
-          onSubmit={event => {
-            this.handleSubmit2(event)
-            navigate(`/app/signup`)
-          }}
-        >
-          <input type="submit" value="Sign Up" />
-        </form>
-        </div>
       </>
     )
   }
 }
 
-export default Login
+export default SignUp

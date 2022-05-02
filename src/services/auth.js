@@ -1,6 +1,8 @@
-//import app from "../components/firebase";
+import app from "../components/firebase";
 //import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
+const auth = getAuth();
 
 export const isBrowser = () => typeof window !== "undefined" 
 
@@ -12,14 +14,23 @@ export const getUser = () =>
 const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
-export const handleLogin = ({ username, password }) => {
-    if (username === `toby` && password === `pass` ) {
+export const handleLogin = ({ email, password }) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in 
         return setUser({
-          username: `temp`,
-          name: `toby`,
-          email: `temp1`,
-        })
-    }
+            username: `temp`,
+            name: `User`,
+            email: `temp1`,
+          })
+        //const user = ;
+        
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    });
   return false
 }
 

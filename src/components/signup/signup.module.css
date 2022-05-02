@@ -7,10 +7,3 @@
   grid-gap: 0.5em;
   grid-template-columns: repeat(3, 1fr);
 }
-.linkStyle {
-  padding-top: 15px;
-  list-style: none;
-  color: #42413d;
-  align-items: center;
-  text-align: center;
-}
