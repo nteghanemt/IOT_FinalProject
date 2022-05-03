@@ -19,8 +19,7 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
-
+    handleLogin(this.state);
   }
 
   render() {
@@ -39,7 +38,6 @@ class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/app/profile`)
           }}
         >
           <label>
