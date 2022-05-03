@@ -1,7 +1,5 @@
 import React from "react"
 import { navigate } from "gatsby"
-//import { Link } from "gatsby"
-import { Link } from '@reach/router'
 import { view, 
 pictureFormat,
 linkStyle} from "./login.module.css"
@@ -62,15 +60,6 @@ class Login extends React.Component {
         </form>
         </div>
         <div className={ view } >
-        <form
-          method="post"
-          onSubmit={event => {
-            this.handleSubmit2(event)
-            navigate(`/app/signup`)
-          }}
-        >
-          <input type="submit" value="Sign Up" />
-        </form>
         </div>
       </>
     )

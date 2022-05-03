@@ -18,7 +18,7 @@ export default function Home() {
         ) : (
           <>
             You should <Link to="/app/login">log in</Link> to see your profile
-            content or <Link to="/app/signup">sign up</Link> if you haven't yet
+            content
           </>
         )}
       </p>
