@@ -5,7 +5,6 @@ import PrivateRoute from "../components/privateRoute"
 import Profile from "../components/profile/profile"
 import Game from "../components/game/game"
 import Login from "../components/login/login"
-import SignUp from "../components/signup/signup"
 
 const App = () => (
   <Layout>
@@ -13,7 +12,6 @@ const App = () => (
     <Login path="/app/login" />
         <PrivateRoute path="/app/profile" component={Profile} />
         <PrivateRoute path="/app/game" component={Game} />
-        <PrivateRoute path="/app/signup" component={SignUp} />
     </Router>
   </Layout>
 )

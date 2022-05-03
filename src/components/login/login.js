@@ -1,8 +1,7 @@
 import React from "react"
 import { navigate } from "gatsby"
 import { view, 
-pictureFormat,
-linkStyle} from "./login.module.css"
+pictureFormat} from "./login.module.css"
 import { handleLogin, isLoggedIn } from "../../services/auth"
 import { StaticImage } from 'gatsby-plugin-image'
 
@@ -23,10 +22,6 @@ class Login extends React.Component {
     handleLogin(this.state)
 
   }
-  handleSubmit2 = event => {
-    event.preventDefault()
-  }
-
 
   render() {
     if (isLoggedIn()) {
