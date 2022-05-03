@@ -7,6 +7,7 @@ import { getDatabase, ref, get, set, update } from "firebase/database";
 class Game extends React.Component {
     state = {
         move: ``,
+        prevMove: ''
     }
     
     handleUpdate = event => {
@@ -15,6 +16,8 @@ class Game extends React.Component {
         })
     }
     handleSubmit = event => {
+        this.state.prevMove = this.state.move
+
         event.preventDefault()
         var current_count = 0;
         const dbref = ref(getDatabase(), 'Games');
@@ -31,6 +34,7 @@ class Game extends React.Component {
         // I was having trouble upgating the moves in dictionary
         // if you can figure that out that would be great
         /////////////////////
+        /*
         const address = "Games/Game" + current_count;
         const db = ref(getDatabase(), );
         get(db).then((snapshot) => {
@@ -45,6 +49,16 @@ class Game extends React.Component {
             update(db, updates);
             update(db,{
                 MoveCount: current_count2 + 1
+            });
+        }
+        */
+       console.log(this.state.move)
+        const address = "move";
+        const db = ref(getDatabase(), );
+        get(db).then((snapshot) => {
+        if(snapshot.exists()){
+            update(db,{
+                move: this.state.move
             });
         }
         else{
@@ -70,6 +84,13 @@ class Game extends React.Component {
                     <input type="text" name="move" onChange={this.handleUpdate} />
                 </label>
                 <input type="submit" value="Enter" />
+                <br>
+                </br>
+                <br>
+                </br>
+                <label>
+                    Made move {this.state.prevMove}
+                </label>
                 </form>
                 </div>
             </>
