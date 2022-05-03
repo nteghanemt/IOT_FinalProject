@@ -1,8 +1,7 @@
 import app from "../components/firebase";
-//import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth();
+const auth = getAuth(app);
 
 export const isBrowser = () => typeof window !== "undefined" 
 
@@ -27,10 +26,6 @@ export const handleLogin = ({ email, password }) => {
         
         // ...
     })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
   return false
 }
 
