@@ -7,7 +7,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 class Login extends React.Component {
   state = {
-    username: ``,
+    email: ``,
     password: ``,
   }
 
@@ -19,7 +19,7 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
+    handleLogin(this.state);
   }
 
   render() {
@@ -38,12 +38,11 @@ class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/app/profile`)
           }}
         >
           <label>
-            Username
-            <input type="text" name="username" onChange={this.handleUpdate} />
+            Email
+            <input type="text" name="email" onChange={this.handleUpdate} />
           </label>
           <label>
             Password
@@ -52,6 +51,8 @@ class Login extends React.Component {
           </label>
           <input type="submit" value="Log In" />
         </form>
+        </div>
+        <div className={ view } >
         </div>
       </>
     )
